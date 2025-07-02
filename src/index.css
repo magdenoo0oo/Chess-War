@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #1a4d3a #1a1a1a;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1a4d3a;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #2d6b4a;
+}
+
+/* Tactical glow effects */
+.tactical-glow {
+  box-shadow: 0 0 20px rgba(26, 77, 58, 0.3);
+}
+
+.tactical-glow:hover {
+  box-shadow: 0 0 30px rgba(26, 77, 58, 0.5);
+}
+
+/* Arabic font optimization */
+body {
+  font-family: 'Orbitron', system-ui, -apple-system, sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL support */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Matrix rain background */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Chess piece animations */
+.chess-piece-move {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tactical animations */
+@keyframes radar-ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.radar-ping {
+  animation: radar-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Loading states */
+.tactical-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.tactical-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(26, 77, 58, 0.2),
+    transparent
+  );
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Responsive chessboard */
+@media (max-width: 640px) {
+  .chess-board-container {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chess-board-container {
+    max-width: 300px;
+  }
+}
+
+/* Focus states for accessibility */
+.tactical-focus:focus {
+  outline: 2px solid #1a4d3a;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .tactical-card {
+    border-width: 2px;
+  }
+  
+  .tactical-button {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fix for hover scale */
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+/* Gradient text fix */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Ensure proper text rendering */
+.text-transparent {
+  color: transparent;
+}
+
+/* Fix for RTL spacing */
+.rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  margin-right: calc(var(--tw-space-x) * var(--tw-space-x-reverse));
+  margin-left: calc(var(--tw-space-x) * calc(1 - var(--tw-space-x-reverse)));
+}
+
+/* Ensure proper backdrop blur */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+/* Navbar improvements */
+.navbar-item {
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-item:hover {
+  transform: translateY(-1px);
+}
+
+/* Compact navbar styles */
+@media (min-width: 1024px) {
+  .navbar-compact {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation improvements */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(26, 77, 58, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(26, 77, 58, 0.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
